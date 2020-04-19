@@ -21,35 +21,32 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   labelCss: {
-   marginLeft: theme.spacing(4),
-   marginTop:theme.spacing(9),
-   marginRight: theme.spacing(4),
-   fontFamily: 'papyrus',
-   fontSize:30,
-   fontWeight:'bold',
-   right : 'auto',
-   color:'white'
+    marginLeft: theme.spacing(4),
+    marginTop: theme.spacing(9),
+    marginRight: theme.spacing(4),
+    fontFamily: 'papyrus',
+    fontSize: 30,
+    fontWeight: 'bold',
+    right: 'auto',
+    color: 'white'
   },
-  Add :{
-    color:'orange',
-},
-clear :{
-    color:'cyan',
-},
-circle :{
-    color:'lightgreen',
-    
-},
-inputColor:
-{
-color : 'white',
-
-},
-backColor:
-{
-     color:'white',
-//  backgroundColor:'  rgb(73, 26, 66)'
-}
+  Add: {
+    color: 'orange',
+  },
+  clear: {
+    color: 'cyan',
+  },
+  circle: {
+    color: 'lightgreen',
+  },
+  inputColor:
+  {
+    color: 'white',
+  },
+  backColor:
+  {
+    color: 'white',
+  }
 }));
 
 export default function SimpleSelect(props) {
@@ -58,43 +55,43 @@ export default function SimpleSelect(props) {
 
   const handleChange = (event) => {
     setSymbol(event.target.value);
-    props.getSymbol(event.target.value,props.playerNo)
+    props.getSymbol(event.target.value, props.playerNo)
   };
 
   useEffect(() => {
-setSymbol("")
-   
+    setSymbol("")
+
   }, [props.endGame])
 
   return (
     <div >
-  <div>
+      <div>
 
-  <label className = {classes.labelCss}>Player{props.playerNo}</label>
-  </div >
-       {!props.gridActive ?
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label" className={classes.inputColor}>Symbol</InputLabel>
-       
-        <Select
-       
-          labelId="demo-simple-select-label"
-          className={classes.backColor}
-          id="demo-simple-select"
-          value={symbol}
-          onChange={handleChange}
-        >
-          <MenuItem value={'plus'}><AddIcon className={classes.Add}/></MenuItem>
-          <MenuItem value={'cross'}><ClearIcon className={classes.clear}/></MenuItem>
-          <MenuItem value={'circle'}><RadioButtonUncheckedIcon className={classes.circle}/></MenuItem>
-        </Select>
-        </FormControl> 
+        <label className={classes.labelCss}>Player{props.playerNo}</label>
+      </div >
+      {!props.gridActive ?
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label" className={classes.inputColor}>Symbol</InputLabel>
+
+          <Select
+
+            labelId="demo-simple-select-label"
+            className={classes.backColor}
+            id="demo-simple-select"
+            value={symbol}
+            onChange={handleChange}
+          >
+            <MenuItem value={'plus'}><AddIcon className={classes.Add} /></MenuItem>
+            <MenuItem value={'cross'}><ClearIcon className={classes.clear} /></MenuItem>
+            <MenuItem value={'circle'}><RadioButtonUncheckedIcon className={classes.circle} /></MenuItem>
+          </Select>
+        </FormControl>
         :
         <FormControl className={classes.formControl}>
-           {props.pSymbol==='circle' ? <RadioButtonUncheckedIcon style={{ fontSize: 50 }} className={classes.circle}/>   : props.pSymbol==='cross' ? <ClearIcon style={{ fontSize: 60 }} className={classes.clear}/> : <AddIcon style={{ fontSize: 60 }} className={classes.Add}/> }
-       <h3 style={{color:'grey'}}>Score: {props.winScore}</h3>
-          </FormControl> 
-       }
+          {props.pSymbol === 'circle' ? <RadioButtonUncheckedIcon style={{ fontSize: 50 }} className={classes.circle} /> : props.pSymbol === 'cross' ? <ClearIcon style={{ fontSize: 60 }} className={classes.clear} /> : <AddIcon style={{ fontSize: 60 }} className={classes.Add} />}
+          <h3 style={{ color: 'grey' }}>Score: {props.winScore}</h3>
+        </FormControl>
+      }
     </div>
   );
 }

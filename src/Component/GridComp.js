@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -13,23 +12,8 @@ import { Drawer } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-
-    //   position: 'absolute',
-    //   margin: 'auto',
-    //  top: '500',
-    //  right: 0,
-    //   bottom: 150,
-    //  left: 0,
-    // backgroundColor : 'yellow',
     paddingTop: theme.spacing(7),
     margin: theme.spacing(5)
-
-    // height : 700,
-    // minHeight : 400  ,
-    //  height: 100,
-    // display:'flex',
-    //alignSelf: 'flex-end'
-    //   justifyContent:'center'
   },
   paper: {
     height: 80,
@@ -37,28 +21,21 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     margin: theme.spacing(3),
     marginTop: theme.spacing(3),
-    //  marginBottom : theme.spacing(0),
     textAlign: 'center',
     justify: "center",
     alignItems: "center",
     backgroundColor: 'rgb(27, 0, 26)',
-    //  backgroundColor : 'pink'
   },
   grd: {
-
-    borderLeft: '5px solid red',  //white
-
+    borderLeft: '5px solid red',  
   },
   g:
   {
-    borderLeft: '5px solid grey',  //white
-
+    borderLeft: '5px solid grey',  
   },
   horizonBorder:
   {
-    borderBottom: '5px solid red', //white
-    // backgroundColor : 'black',
-
+    borderBottom: '5px solid red', 
   },
   hB:
   {
@@ -81,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 200,
     width: 400,
     minWidth: 200,
-    // backgroundColor:'pink'
   },
 }));
 
@@ -92,6 +68,7 @@ export default function CenteredGrid(props) {
   const [gridArr, setgridArr] = useState([]);
   const [win, setWin] = useState(false);
   const [winner, SetWinner] = useState('');
+
   function apiCall(pSymbol) {
     if (pSymbol === 'plus') {
       return (<AddIcon className={classes.Add} />)
@@ -105,38 +82,31 @@ export default function CenteredGrid(props) {
   }
 
   function addToGrid(id) {
-    console.log("Addtogrid", props.gridActive, props.p1Symbol, props.p2Symbol, id)
-    let grid = gridArr
+      let grid = gridArr
     setWin(false);
     var wins;
     if (grid[id] === undefined) {
       if (count % 2 === 0) {
         grid[id] = props.p1Symbol
         setgridArr(grid)
-        console.log('p1------', gridArr)
         wins = checkDim('Player 1 Wins', props.p1Symbol, gridArr)
       }
       else {
         grid[id] = props.p2Symbol
         setgridArr(grid)
-        console.log('p1------', gridArr)
         wins = checkDim('Player 2 Wins', props.p2Symbol, gridArr)
       
       }
       setCount(count + 1)
       setTimeout(() => {
-        console.log(wins+'--------------------------'+count)
-        if (count === 8 && wins === false) {
+       if (count === 8 && wins === false) {
           setWin(win + true)
           SetWinner('Games Draw..')
           setCount(0);
           setgridArr([]);
           props.incCount('Draw');
         }
-      }, 700);
-
-
-
+      }, 800);
     }
 
   }
@@ -162,7 +132,6 @@ export default function CenteredGrid(props) {
 
   return (
     <div className={classes.root} >
-      {/* //  {props.gridActive && setSym()} */}
       <Grid container
         justify="center"
         spacing={0} className={classes.main}>

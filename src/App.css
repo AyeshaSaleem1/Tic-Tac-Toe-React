@@ -48,9 +48,7 @@
 {
   display: flex;
   text-align: center;
-  /* background-color: olivedrab; */
   margin-right: 200;
- /* // margin: auto; */
   align-self: flex-end;
 }
 
@@ -60,8 +58,7 @@
   flex-wrap: wrap;
   flex-direction:  row;
   justify-content: space-between;
-  /* height: 600px; */
-
+ 
 }
 
 @media screen and (min-width: 601px) {
@@ -95,10 +92,4 @@ h1
   font-family: 'Jokerman';
   color: green;
 
-}
-h2{
- 
-  font-weight: bold;
-  color: maroon;
-  text-decoration: underline;
 }
