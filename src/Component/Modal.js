@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
 import Button from "./Button";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,39 +17,46 @@ const useStyles = makeStyles((theme) => ({
   },
   button:
   {
-    marginTop: theme.spacing(7),
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    marginTop : theme.spacing(7),
+     display:'flex',
+     flexDirection :'row',
+     justifyContent : 'space-between',
   },
-  heading: {
-    fontFamily: 'Papyrus',
-    color: 'Green',
-    fontWeight: 'Bold'
+  heading:{
+    fontFamily:'Papyrus',
+    color : 'Green',
+    fontWeight:'Bold'
   }
 }));
-const body = (
 
 
-  <div style={{ backgroundColor: 'Black' }} className={classes.paper}>
-    <h3 id="transition-modal-title" className={classes.heading}><center>{props.winner}</center></h3>
-    <div className={classes.button}>  <Button btnName={'End Game'} gridFalse={props.gridFalse} />
-      <Button btnName={'Continue'} />
+export default function SimpleModal(props) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+
+  const body = (
+   
+    
+    <div  style={{backgroundColor:'Black'}}className={classes.paper}>
+      <h3 id="transition-modal-title" className = {classes.heading}><center>{props.winner}</center></h3>
+   <div className = {classes.button}>  <Button btnName = {'End Game'} gridFalse = {props.gridFalse}/>
+   <Button btnName = {'Continue'}/>
+ </div>
     </div>
-  </div>
-);
+  );
 
-return (
-  <div>
-    {props.win &&
+  return (
+    <div>
+      {props.win &&
       <Modal
-        open={open}
-        className={classes.modal}
-        onClick={() => setOpen(false)}
+      open={open}
+      className={classes.modal}
+      onClick={()=>setOpen(false)}
       >
         {body}
       </Modal>
-    }
-  </div>
-);
+}
+    </div>
+  );
 }
